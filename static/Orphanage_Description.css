@@ -1,0 +1,418 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+/*  Backgorund color: soft*/
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('your-image-url.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(5px);
+    z-index: -1;
+}
+body {
+/*     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('https://cdn5.vectorstock.com/i/1000x1000/91/74/people-with-box-and-basket-charity-donation-vector-30679174.jpg') no-repeat center center fixed;
+    background-size: cover; */
+    background: linear-gradient(to right, #f5e6a6, #f7c873);
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.logo-text h1 {
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logo-text p {
+    color: #666;
+    font-size: 12px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    background-color: #f0f0f0;
+}
+
+.donate-btn {
+    background-color: #f5c542;
+    color: #333;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.donate-btn:hover {
+    background-color: #e6b93a;
+}
+/*  main */
+.container {
+    max-width: 1600px; /* Set consistent width */
+    margin: 20px auto;
+    width: 95%; /* Ensure it expands up to max-width */  margin-right : 30px;
+
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Hover Effect - Subtle Lift */
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.image-section {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.image-section img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.image-section:hover img {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Headings in Info Section */
+/* Info Section - Sleek, Modern Look */
+.info-section {
+    flex: 1;
+    padding: 25px;
+    font-size: 16px;
+    color: #333;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    margin-left: 15px;  /* Added left margin */
+}
+
+/* Hover Effect */
+.info-section:hover {
+    transform: translateY(-3px);
+    box-shadow: inset 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Headings in Info Section */
+.info-section h2 {
+    font-size: 22px;
+    color: #222;
+    margin-bottom: 15px;  /* Added spacing */
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ffcc00;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* List Styling */
+.info-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Each List Item */
+.info-section ul li {
+    font-size: 17px;  /* Slightly larger for readability */
+    margin: 12px 0;  /* Added more vertical spacing */
+    padding: 12px;
+    background: #ffcc00;
+    border-radius: 8px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Added space between icon and text */
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Icon before each list item */
+.info-section ul li::before {
+    content: "✔";
+    color: #333;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Hover Effect on List Items */
+.info-section ul li:hover {
+    background: #ffdb4d;
+    transform: scale(1.05);
+}
+
+/* Added Padding for Better Spacing */
+.info-section p {
+    font-size: 16px;
+    line-height: 1.6;
+    padding-top: 10px;
+}
+
+
+.requirements, .description {
+    max-width: 1600px; /* Ensure consistent max width */
+    width: 95%; /* Expand fully within max-width */
+    text-align: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Hover effect - subtle lift */
+.requirements:hover, .description:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Section Headings - Sleek Look */
+.requirements h2, .description h2 {
+    font-size: 22px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ff9900, #ff6600);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Stylish requirements tags */
+.requirements ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.requirements ul li {
+    background: linear-gradient(135deg, #ff9800, #d84315); /* Darker Orange Gradient */
+    color: white;
+    font-weight: bold;
+    padding: 14px 20px;
+    margin: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.requirements ul li:hover {
+    transform: scale(1.05); /* Subtle scaling for smooth effect */
+    box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(135deg, #f57c00, #bf360c); /* Even darker gradient on hover */
+}
+
+
+
+.description p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .requirements ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .requirements ul li {
+        width: 80%;
+        text-align: center;
+    }
+}
+/* Footer Section */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 30px 20px;
+    margin-top: 30px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.footer-about, .footer-focus, .footer-links {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+    padding-right: 20px;
+}
+
+.footer-about h3, .footer-focus h3, .footer-links h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #f5c542;
+}
+
+.footer-about p {
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.footer-focus ul, .footer-links ul {
+    list-style: none;
+}
+
+.footer-focus ul li, .footer-links ul li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.footer-links ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: #f5c542;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    font-size: 14px;
+}
+
+.social-icons a {
+    color: #fff;
+    margin-left: 15px;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #f5c542;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav ul li {
+        margin: 5px;
+    }
+    
+    .slideshow-container {
+        height: 300px;
+    }
+    
+    .hero-caption {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+    
+    .search-filter {
+        flex-direction: column;
+    }
+    
+    .search-box, .filter-dropdown, .apply-filter {
+        margin-bottom: 10px;
+        margin-right: 0;
+        width: 100%;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .social-icons {
+        margin-top: 15px;
+    }
+}

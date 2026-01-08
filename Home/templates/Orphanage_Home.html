@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Care Nest - Help & Care</title>
+    
+    <link rel="stylesheet" href="{% static 'Orphanage_Home.css' %}?v1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Care Nest Logo">
+            <div class="logo-text">
+                <h1>CARE NEST</h1>
+                <p>HELP & CARE</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#footer">About Us</a></li>
+                <li><a href="/feedback">Feedback</a></li>
+                {% if user.is_superuser %}
+                    <li><a href="/add_orpho">Add Orphanage</a></li>
+                    <li><a href="/feedback_details">User Feedbacks</a></li>
+                {% endif %}
+                <li><a href="#">Chatbot</a></li>
+                {% if user.is_authenticated %}
+                  <li><a href="/logout" class="donate-btn">Logout</a></li>
+                {% else %}
+                <li><a href="/login" class="donate-btn">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Slideshow Section -->
+    <section class="hero-section">
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="slide1.jpg" alt="Children in classroom">
+            </div>
+            <div class="slide fade">
+                <img src="slide2.jpg" alt="Children playing">
+            </div>
+            <div class="slide fade">
+                <img src="slide3.jpg" alt="Children learning">
+            </div>
+        </div>
+        <div class="hero-caption">
+            <p>You cant change the world!</p>
+            <p>but you <span>can change</span> their lives!!</p>
+        </div>
+    </section>
+
+    <!-- Scrollable Cards Section -->
+    <section class="cards-section">
+      <form method="POST">
+        {% csrf_token %}        
+        <div class="search-filter">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" name="filter" placeholder="Orphanage Name">
+            </div>
+            <div class="filter-dropdown">
+                <select name="district">
+                    <option>All</option>
+                    <option>Pune</option>
+                    <option>Mumbai</option>
+                    <option>Kolhapur</option>
+                </select>
+            </div>
+            <input type="submit" class="apply-filter" value="Apply Filter">
+        </div>
+      </form>
+        
+        <div class="cards-container">
+          {% for orphanage in orpho_info%}
+            <div class="card" style="width:300px;">
+                <div class="card-image">
+                    <img src="{{orphanage.orpho_image.url}}" alt="Hope Shelter">
+                </div>
+                <div class="card-content">
+                    <h3>{{orphanage.orpho_name}}</h3>
+                    <p>City: {{orphanage.orpho_city}}</p>
+                    <a href="/orpho_desc/{{orphanage.id}}"><button class="explore-btn">Explore</button></a>
+                </div>
+            </div>
+          {% endfor %}            
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>ABOUT US</h3>
+                <p>Our NGO is dedicated to creating sustainable change by empowering communities, protecting the environment and providing education. Through various initiatives, we aim to make a lasting impact on society by addressing key issues like poverty, healthcare and gender equality, and climate action.</p>
+            </div>
+            
+            <div class="footer-focus">
+                <h3>Our Focus Areas</h3>
+                <ul>
+                    <li>Child Care & Literacy</li>
+                    <li>Women Empowerment</li>
+                    <li>Environment & Conservation</li>
+                    <li>Health & Nutrition</li>
+                    <li>Poverty Alleviation</li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Our Programs</a></li>
+                    <li><a href="#">Get Involved</a></li>
+                    <li><a href="#">Donate</a></li>
+                    <li><a href="#">Volunteer</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>Copyright © 2025 All Rights Reserved by Care Nest.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static "Orphanage_Home.js" %}"></script>
+</body>
+</html>

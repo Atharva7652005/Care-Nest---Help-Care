@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Orphanage - Vatsalya</title>
+    <link rel="stylesheet" href="{% static "Update_Orphanage.css" %}">
+    <link rel="stylesheet" href="{% static "Orphanage_Navbar.css" %}">
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Care Nest Logo">
+            <div class="logo-text">
+                <h1>CARE NEST</h1>
+                <p>HELP & CARE</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="#footer">About Us</a></li>
+                <li><a href="/feedback">Feedback</a></li>
+                {% if user.is_superuser %}
+                    <li><a href="/add_orpho">Add Orphanage</a></li>
+                {% endif %}
+                <li><a href="#">Chatbot</a></li>
+                {% if user.is_authenticated %}
+                  <li><a href="/logout" class="donate-btn">Logout</a></li>
+                {% else %}
+                <li><a href="/login" class="donate-btn">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <div class="form-container">
+        <h2>Update Orphanage/Old Age Home</h2>
+        <form action="/update-orphanage" method="POST" enctype="multipart/form-data">
+
+            <select id="type" name="orpho_type" required>
+                <option value="" disabled selected hidden>Choose Orphanage/Old Age Home</option>
+                <option value="orpho_type">Child Home</option>
+                <option value="orpho_type">Old Age Home</option>
+                <option value="orpho_type">NGOorpho_</option>
+            </select>
+
+            <input type="text" id="name" name="orpho_name" placeholder="Enter Orphanage/ Child Home Name" required pattern=".{3,}" title="Name must be at least 3 characters long">
+
+            <textarea id="address" name="orpho_address" placeholder="Enter Orphanage/Child HomeAddress" rows="3" required minlength="10" title="Address must be at least 10 characters long"></textarea>
+
+            <input type="tel" id="contact" name="orpho_contact" placeholder="Orphanage Contact Number" required pattern="\d{10}" title="Contact number must be exactly 10 digits">
+
+            <input type="email" id="email" name="orpho_email" placeholder="Orphanage Email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address">
+
+            <input type="number" id="residents" name="orpho_residents" placeholder="Number of Residents" required min="1" max="1000" title="Please enter a valid number of residents (1-1000)">
+
+            <input type="text" id="caretaker" name="orpho_caretaker" placeholder="Name of Caretaker" required pattern=".{3,}" title="Caretaker's name must be at least 3 characters long">
+
+            <div id="flexbox">
+                <input type="file" id="image" name="orpho_image" accept="image/*" required title="Please upload an image">
+                <select id="orpho_city" name="orpho_city" required>
+                    <option value="" disabled selected hidden>--------- Select City --------- </option>
+                    <option name="orpho_city">Pune</option>
+                    <option name="orpho_city" >Mumbai</option>
+                </select>
+            </div>
+
+            <textarea id="requirements" name="orpho_requirements" placeholder="List urgent needs (e.g., food, clothes)" rows="4" minlength="5" required title="Please provide at least 5 characters"></textarea>
+
+            <textarea id="description" name="orpho_description" placeholder="Description" rows="5" minlength="20" required title="Description must be at least 20 characters long"></textarea>
+
+            <div class="button-container">
+                <button type="reset" class="reset">Reset Form</button>
+                <button type="submit" class="update">Update Orphanage Details</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

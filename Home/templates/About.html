@@ -1,0 +1,419 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us - Care Nest</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #fce4ec);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the footer stays at the bottom */
+        }
+
+        header {
+            background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .text-block h1 {
+            font-size: 36px;
+            margin: 0;
+            color: #ffffff;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .tagline {
+            font-size: 16px;
+            color: #fffde7;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        nav {
+            background-color: #f8f8f8;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            z-index: 100; /* Ensure it stays above other content */
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            color: #e91e63;
+        }
+
+        nav ul li a.active {
+            color: #e91e63;
+        }
+
+        nav ul li a.donate-btn {
+            background-color: #ffc107;
+            color: white;
+        }
+
+        nav ul li a.donate-btn:hover {
+            background-color: #e0ac06;
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            flex-grow: 1; /* Allow the content to take up remaining vertical space */
+        }
+
+        .about-section {
+            margin-bottom: 30px;
+        }
+
+        .about-section h2 {
+            font-size: 26px;
+            color: #e91e63;
+            margin-bottom: 10px;
+        }
+
+        .about-section p {
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            border-left: 6px solid #ffc107;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 40px; /* Add some space above the footer */
+        }
+
+        footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 0;
+    text-align: center; /* Default center alignment for smaller screens */
+    margin-top: 40px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around; /* Distribute space evenly between main sections */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    flex-wrap: wrap; /* Allow sections to wrap on smaller screens */
+}
+
+.footer-about,
+.footer-focus,
+.footer-links {
+    margin-bottom: 30px;
+    text-align: left; /* Align text within each section to the left */
+    min-width: 200px; /* Ensure a minimum width for each section */
+}
+
+.footer-about h3,
+.footer-focus h3,
+.footer-links h3 {
+    font-size: 20px;
+    color: #f8f8f8;
+    margin-bottom: 10px;
+}
+
+.footer-about p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.footer-focus ul,
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-focus ul li,
+.footer-links ul li {
+    margin-bottom: 8px;
+}
+
+.footer-focus ul li a,
+.footer-links ul li a {
+    text-decoration: none;
+    color: #ddd;
+    transition: color 0.3s ease;
+}
+
+.footer-focus ul li a:hover,
+.footer-links ul li a:hover {
+    color: #ffc107;
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #555;
+    display: flex;
+    justify-content: space-between; /* Align copyright to left, social icons to right */
+    align-items: center;
+    font-size: 14px;
+    padding: 0 20px;
+    flex-wrap: wrap; /* Allow bottom section to wrap on smaller screens */
+    gap: 10px; /* Add some gap between elements in the bottom section */
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin-left: 10px;
+    color: #ddd;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #ffc107;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Stack sections vertically on smaller screens */
+        text-align: center; /* Center align text within sections on smaller screens */
+    }
+
+    .footer-about,
+    .footer-focus,
+    .footer-links {
+        text-align: center;
+        min-width: auto; /* Allow full width on smaller screens */
+    }
+
+    .footer-bottom {
+        justify-content: center; /* Center align bottom section on smaller screens */
+        flex-direction: column; /* Stack copyright and social icons */
+        align-items: center;
+    }
+
+    .social-icons {
+        margin-top: 10px;
+    }
+
+    .social-icons a {
+        margin: 0 5px;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <img src="{% static 'logo.png' %}" alt="Care Nest Logo" class="logo">
+            <div class="text-block">
+                <h1>Care Nest</h1>
+                <p class="tagline">Help & Care</p>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#footer"  class="active">About Us</a></li>
+            <li><a href="/feedback">Feedback</a></li>
+            <li><a href="/add_orpho">Add Orphanage</a></li>
+            <li><a href="/logout" class="donate-btn">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="about-container">
+        <div class="about-section">
+            <h2>Our Mission</h2>
+            <p>
+                At <strong>Care Nest</strong>, we believe in making the world a kinder and more connected place.
+                Our platform bridges the gap between generous individuals and those in need — be it an orphanage filled with innocent dreams or an old-age home where time slows down but hearts long for warmth.
+            </p>
+        </div>
+    
+        <div class="about-section">
+            <h2>What We Provide</h2>
+            <ul>
+                <li><strong>Verified Listings</strong> of orphanages and old-age homes.</li>
+                <li><strong>Donation Support</strong> – monetary, goods, clothing, or food.</li>
+                <li><strong>Volunteer Opportunities</strong> to connect with homes near you.</li>
+                <li><strong>Updates & Needs</strong> – Stay informed about urgent requirements.</li>
+                <li><strong>Transparency</strong> – Real-time updates from the homes themselves.</li>
+            </ul>
+        </div>
+    
+        <div class="about-section" id="our-programs">
+            <h2>Our Programs</h2>
+            <p>
+                Care Nest runs a range of programs aimed at uplifting vulnerable communities. Each initiative is designed to create sustainable change and bring hope to those who need it most.
+            </p>
+            <ul>
+                <li><strong>Educational Support</strong>: Providing books, tutoring, and scholarships to children in orphanages to ensure a brighter future.</li>
+                <li><strong>Healthcare Camps</strong>: Organizing medical checkups and wellness drives for residents of orphanages and old-age homes.</li>
+                <li><strong>Skill Development</strong>: Offering workshops to teach vocational skills, empowering youth and elders alike.</li>
+                <li><strong>Community Celebrations</strong>: Hosting festivals and events to foster joy and togetherness in care homes.</li>
+            </ul>
+        </div>
+    
+        <div class="about-section" id="get-involved">
+            <h2>Get Involved</h2>
+            <p>
+                Your participation can transform lives. Whether through time, skills, or advocacy, there are countless ways to join Care Nest’s mission and make a difference.
+            </p>
+            <ul>
+                <li><strong>Raise Awareness</strong>: Share our work on social media to connect more people with our cause.</li>
+                <li><strong>Host Events</strong>: Organize fundraisers or donation drives in your local community.</li>
+                <li><strong>Collaborate</strong>: Partner with us as an organization to amplify our impact.</li>
+                <li><strong>Join Us</strong>: Become a dedicated volunteer or ambassador for Care Nest.</li>
+            </ul>
+        </div>
+    
+        <div class="about-section" id="donate">
+            <h2>Donate</h2>
+            <p>
+                Your generosity fuels our mission. Donations of any kind help provide essential resources to orphanages and old-age homes, ensuring they thrive.
+            </p>
+            <ul>
+                <li><strong>Monetary Support</strong>: Fund daily operations, urgent needs, or specific projects.</li>
+                <li><strong>Material Gifts</strong>: Donate clothes, books, food, or medical supplies.</li>
+                <li><strong>Sponsorship</strong>: Support a child’s education or an elder’s healthcare for a year.</li>
+                <li><strong>Legacy Donations</strong>: Include Care Nest in your will to leave a lasting impact.</li>
+            </ul>
+        </div>
+    
+        <div class="about-section" id="volunteer">
+            <h2>Volunteer</h2>
+            <p>
+                Volunteering with Care Nest lets you touch lives directly. From spending time with those in need to sharing your expertise, your time is invaluable.
+            </p>
+            <ul>
+                <li><strong>Mentorship</strong>: Guide children in orphanages with academic or life skills.</li>
+                <li><strong>Companionship</strong>: Offer warmth and conversation to elders in old-age homes.</li>
+                <li><strong>Event Assistance</strong>: Help plan and execute donation drives or community events.</li>
+                <li><strong>Skill Workshops</strong>: Teach art, technology, or other skills to inspire growth.</li>
+            </ul>
+        </div>
+    
+        <div class="about-section highlight">
+            <h2>A Message From Our Heart ❤️</h2>
+            <p>
+                Every child deserves love, every elder deserves dignity. When you support an orphanage or an old-age home, you become the light in someone’s world. Your small act of kindness can bring a smile to someone who thought the world had forgotten them.
+                <br><br>
+                Together, let’s build a community where <strong>no one is left behind</strong>. Let's care, let's connect, and let's create a better tomorrow — together.
+            </p>
+        </div>
+    </div>
+    
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>ABOUT US</h3>
+                <p>
+                    Our NGO is dedicated to creating sustainable change by empowering
+                    communities, protecting the environment and providing education...
+                </p>
+            </div>
+    
+            <div class="footer-focus">
+                <h3>Our Focus Areas</h3>
+                <ul>
+                    <li>Child Care & Literacy</li>
+                    <li>Women Empowerment</li>
+                    <li>Environment & Conservation</li>
+                    <li>Health & Nutrition</li>
+                    <li>Poverty Alleviation</li>
+                </ul>
+            </div>
+    
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#footer">About Us</a></li>
+                    <li><a href="#our-programs">Our Programs</a></li>
+                    <li><a href="#get-involved">Get Involved</a></li>
+                    <li><a href="#donate">Donate</a></li>
+                    <li><a href="#volunteer">Volunteer</a></li>
+                    <li><a href="/feedback">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>Copyright © 2025 All Rights Reserved by Care Nest.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQmOXjv11M9QDqyKGjx2W0AYdgUnAqFdPnPWuO9xmJlQD/AOk6W5xYQVDpjzKMeqjz91CwCC06MxDPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</body>
+</html>

@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials Carousel</title>
+    <link rel="stylesheet" href="{% static "Feedback_Details.css" %}">
+    <link rel="stylesheet" href="{% static "Orphanage_Navbar.css" %}">
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Care Nest Logo">
+            <div class="logo-text">
+                <h1>CARE NEST</h1>
+                <p>HELP & CARE</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="#footer">About Us</a></li>
+                <li><a href="/feedback">Feedback</a></li>
+                {% if user.is_superuser %}
+                    <li><a href="/add_orpho">Add Orphanage</a></li>
+                {% endif %}
+                <li><a href="#">Chatbot</a></li>
+                {% if user.is_authenticated %}
+                  <li><a href="/logout" class="donate-btn">Logout</a></li>
+                {% else %}
+                <li><a href="/login" class="donate-btn">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <div class="testimonial-carousel">
+        <h2>Testimonials</h2>
+        <h3>What Our Clients Say</h3>
+        <div class="carousel-container">
+            <div class="carousel">
+                {% for feedback in feedback_data %}
+                <div class="testimonial">
+                    <div class="avatar">P</div>
+                    <blockquote>
+                        <p>{{feedback.sender_message}}.</p>
+                    </blockquote>
+                    <p class="client-name">{{feedback.sender_name}}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="navigation">
+            <button class="prev">❮</button>
+            <button class="next">❯</button>
+        </div>
+
+        <!-- Feedback Button -->
+        <div class="feedback-button">
+            <button onclick="location.href='Feedback_Form.html'">Give Feedback</button>
+        </div>
+    </div>
+
+    <script>
+        const carousel = document.querySelector('.carousel');
+        const testimonials = document.querySelectorAll('.testimonial');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+
+        let currentIndex = 0;
+        const itemsPerPage = 3;
+        const totalPages = Math.ceil(testimonials.length / itemsPerPage);
+
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentIndex * 960}px)`;
+        }
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalPages;
+            updateCarousel();
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalPages) % totalPages;
+            updateCarousel();
+        });
+    </script>
+</body>
+</html>

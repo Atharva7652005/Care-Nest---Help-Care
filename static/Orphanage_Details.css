@@ -1,0 +1,126 @@
+      /* Main Card */
+      .orphanage-card {
+        display: flex;
+        width: 100%;
+        max-width: 800px;
+        height: 400px;
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
+        margin: 20px auto;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .orphanage-card:hover {
+        transform: scale(1.02);
+      }
+
+      /* Image Section */
+      .image-container {
+        flex: 60%;
+        height: 100%;
+      }
+
+      .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 15px 0 0 15px;
+      }
+
+      /* Information Section */
+      .info-section {
+        flex: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+      }
+
+      /* Orphanage Details */
+      .orphanage-info {
+        flex: 1;
+        padding: 10px;
+        background: #ffffff;
+        border-bottom: 2px solid #bdc3c7;
+      }
+
+      .orphanage-info h3 {
+        font-weight: bold;
+        color: #2c3e50; /* Dark Blue */
+        font-family: "Georgia", serif;
+      }
+
+      .orphanage-info p {
+        color: #333;
+        margin-bottom: 8px;
+        font-family: "Arial", sans-serif;
+      }
+
+      /* Requirements Section */
+      .requirements-section {
+        flex: 1;
+        background: #ecf0f1; /* Light Gray */
+        padding: 10px;
+        border-radius: 0 0 15px 0;
+      }
+
+      .requirements-section h4 {
+        color: #c0392b; /* Deep Red */
+        font-weight: bold;
+        font-family: "Georgia", serif;
+      }
+
+      .requirements-section ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .requirements-section ul li {
+        background: white;
+        padding: 5px;
+        margin: 5px 0;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Donation Button */
+      .donation-button {
+        background-color: #c0392b; /* Deep Red */
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+      }
+
+      .donation-button:hover {
+        background-color: #a93226; /* Darker Red */
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .orphanage-card {
+          flex-direction: column;
+        }
+
+        .image-container,
+        .info-section {
+          flex: 1 1 100%;
+          max-width: 100%;
+        }
+      }
+
+      .orphanage-card {
+        background: #f5e6ca; /* Soft Beige */
+      }
+
+      body {
+        background-color: #f8f1e4; /* A slightly lighter shade of beige for harmony */
+        color: #333; /* Ensures text remains readable */
+        font-family: "Arial", sans-serif; /* Optional: Ensure a clean font */
+      }

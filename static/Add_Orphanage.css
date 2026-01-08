@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('https://tribecacare.com/wp-content/uploads/2019/02/fun-activities-in-old-age-home.png') no-repeat center center/cover;
+    color: white;
+    padding: 50px;
+    margin: 0;
+    box-sizing: border-box;
+}
+.form-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000000;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+.form-container:hover {
+    transform: translateY(-5px);
+}
+h2 {
+    text-align: center;
+    color: #003366;
+}
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 3px solid #adb4b1;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border 0.3s;
+}
+textarea {
+    resize: none;
+    height : 100px;
+}
+input:focus, textarea:focus, select:focus {
+    border: 3px solid #007bff;
+    outline: none;
+}
+#flexbox {
+    display: flex;
+    gap: 10px; 
+    align-items: center;
+}
+
+#flexbox input,#flexbox select {
+    padding: 10px;
+}
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+#orpho_city {
+    height : 45px;
+}
+button {
+    padding: 12px 24px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+.send {
+    background-color: #ff6600;
+}
+.send:hover {
+    background-color: #e65c00;
+    transform: scale(1.05);
+}
+.reset {
+    background-color: #007bff;
+}
+.reset:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+p {
+    font-size: 14px;
+    color: #666;
+}
