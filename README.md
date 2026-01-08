@@ -1,0 +1,1 @@
+CareNest is your orphanage-focused web platform, where the main goal was to digitally connect orphanages, donors, and volunteers and make information management easier and more transparent.
